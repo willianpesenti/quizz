@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas e Respostas com Voz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .question-button.active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Perguntas e Respostas</h1>
+
+    <button class="question-button" onclick="speakAnswer(this, 'UMA LUTA - O sumô é um esporte tradicional japonês em que dois lutadores se enfrentam em um ringue circular, tentando forçar um ao outro para fora do ringue ou fazer com que qualquer parte do corpo, exceto a sola dos pés, toque o chão.')">O SUMÔ É O QUÊ?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'RIO DE JANEIRO - Os Arcos da Lapa são um famoso ponto turístico e histórico localizado no centro do Rio de Janeiro, sendo um dos cartões-postais mais icônicos da cidade. Eles foram originalmente construídos como um aqueduto para trazer água do rio Carioca para a cidade.')">EM QUE CIDADE FICAM OS 'ARCOS DA LAPA'?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'COSTINHA - Costinha era um humorista brasileiro famoso, mas ele não fazia parte do grupo Os Trapalhões, que era composto por Didi, Dedé, Mussum e Zacarias, personagens que marcaram a história da comédia no Brasil.')">QUAL DESTES HUMORISTAS NÃO FAZIA PARTE DO QUARTETO "OS TRAPALHÕES"?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'MAMÃO - O mamão, também conhecido como papaia, é uma fruta tropical rica em vitaminas, especialmente vitamina C e A, e enzimas digestivas como a papaína, que auxilia na digestão de proteínas.')">PAPAIA É UM TIPO DE:</button>
+    <button class="question-button" onclick="speakAnswer(this, 'PELE - A pele é o maior órgão do corpo humano, cobrindo toda a superfície do corpo e pesando cerca de 3 a 5 kg em um adulto médio. Ela desempenha funções vitais, como proteção contra agentes externos e regulação da temperatura corporal.')">QUAL É O MAIOR E MAIS PESADO ÓRGÃO DO CORPO HUMANO?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'CURLING - O curling é um esporte de inverno em que os jogadores deslizam pedras de granito sobre uma pista de gelo em direção a um alvo, sem a utilização de cavalos. É um esporte de precisão e estratégia.')">QUAL DESTES ESPORTES NÃO É PRATICADO COM CAVALOS?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'O EXTERMINADOR DO FUTURO - Esta frase icônica foi dita por Arnold Schwarzenegger no filme O Exterminador do Futuro 2: O Julgamento Final, um clássico do cinema de ação e ficção científica.')">“HASTA LA VISTA, BABY” FOI UMA FRASE MARCANTE DE QUAL FILME?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'INSTRUMENTO ASTRONÔMICO - Um astrolábio é um antigo instrumento utilizado para determinar a posição dos astros no céu, sendo amplamente utilizado por navegadores e astrônomos na antiguidade e na Idade Média para medir a altura dos corpos celestes acima do horizonte.')">O QUE É UM ASTROLÁBIO?</button>
+    <button class="question-button" onclick="speakAnswer(this, '40 - De acordo com a Bíblia, o Dilúvio durou 40 dias e 40 noites, durante os quais Noé, sua família e os animais permaneceram na arca, até que as águas baixaram e puderam desembarcar em terra firme.')">QUANTOS DIAS E QUANTAS NOITES DUROU O DILÚVIO EM QUE NOÉ E SUA FAMÍLIA SOBREVIVERAM DENTRO DE UMA ARCA?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'DE TOMAR BANHO - Ablutofobia é o medo irracional de tomar banho, lavar-se ou limpar-se, o que pode causar grande desconforto e ansiedade, levando a evitar práticas de higiene pessoal.')">ABLUTOFOBIA É O MEDO DE QUÊ?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'ANTÔNIO FRANCISCO LISBOA - Aleijadinho foi um importante escultor, entalhador e arquiteto do Brasil colonial, famoso por suas obras em Minas Gerais, especialmente nas cidades históricas de Ouro Preto e Congonhas.')">QUAL ERA O NOME DO ARTISTA BARROCO CONHECIDO COMO ALEIJADINHO?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'D. JOÃO VI - O Banco do Brasil foi criado pelo rei Dom João VI em 1808, quando a família real portuguesa se transferiu para o Brasil, sendo a primeira instituição bancária do país e uma das mais antigas do mundo.')">O BANCO DO BRASIL FOI CRIADO EM 1808 POR QUEM?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'RENÉ DESCARTES - O filósofo francês René Descartes é conhecido por esta frase, que resume seu princípio fundamental do racionalismo, expressando a certeza da existência a partir da capacidade de pensar.')">QUE FILÓSOFO É O AUTOR DA FRASE: "PENSO, LOGO EXISTO"?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'MARCO MACIEL - Marco Maciel foi o vice-presidente do Brasil durante os dois mandatos de Fernando Henrique Cardoso, de 1995 a 2003, contribuindo significativamente para a administração federal.')">QUEM FOI O VICE-PRESIDENTE DURANTE O MANDATO DE FERNANDO HENRIQUE CARDOSO?</button>
+    <button class="question-button" onclick="speakAnswer(this, 'ROBBEN ISLAND - Nelson Mandela ficou preso por 18 anos na Robben Island, na África do Sul, onde se tornou um símbolo da luta contra o apartheid e da resistência pela liberdade e igualdade.')">EM QUE PENITENCIÁRIA NELSON MANDELA FICOU PRESO POR 18 ANOS?</button>
+
+    <script>
+        function speakAnswer(button, answer) {
+            var synth = window.speechSynthesis;
+            var utterThis = new SpeechSynthesisUtterance(answer);
+            var voices = synth.getVoices();
+            var voice = voices.find(voice => voice.lang === 'pt-BR' && (voice.name.includes('female') || voice.name.includes('feminina') || voice.name.includes('mulher')));
+
+            // Fallback to the first Portuguese voice if a female voice is not found
+            if (!voice) {
+                voice = voices.find(voice => voice.lang === 'pt-BR');
+            }
+
+            utterThis.voice = voice;
+            button.classList.add('active');
+            utterThis.onend = function () {
+                button.classList.remove('active');
+            };
+
+            synth.speak(utterThis);
+        }
+
+        // Load voices asynchronously for mobile devices
+        if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = function() {
+                var voices = speechSynthesis.getVoices();
+            };
+        }
+    </script>
+</body>
+</html>
